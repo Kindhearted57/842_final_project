@@ -8,6 +8,23 @@ using Benchmarking.Common;
 
 namespace GCBurn.BurnTest 
 {
+    public class GcResult {
+        public System.TimeSpan Duration {get; set;}
+        // StaticSetSize
+        public long staticSetSize {get; set;}
+        // Thread count
+        public int Thread {get; set;}
+        // MaxSize 
+        public double MaxSize{get; set;}
+        public double MaxTime{get; set;}
+        // OperationperSecond
+        public double OperationperSecond {get; set;}
+        //
+        public double RAMUseBefore {get; set;}
+        public double RAMUseAfter {get;set;}
+        public double globalPauses {get;set;}
+        // result
+    }
     public class BurnTester
     {
         public const int AllocationSequenceLength = 1 << 20; // 2^20, i.e. ~ 1M items; must be a power of 2!
@@ -83,7 +100,7 @@ namespace GCBurn.BurnTest
             _isInitialized = true;
         }
 
-        public void Run()
+        public GcResult Run()
         {
             TryInitialize();
             
@@ -181,6 +198,38 @@ namespace GCBurn.BurnTest
                 }
             }
             Writer.AppendLine();
+            GcResult GCResult = new GcResult{
+                Duration = BurnTester.DefaultDuration,
+                staticSetSize = BurnTester.StaticSetSize,
+                Thread = ParallelRunner.ThreadCount,
+                MaxSize = BurnTester.DefaultMaxSize,
+                MaxTime = BurnTester.DefaultMaxTime,
+                OperationperSecond = allocators.Sum(a => a.AllocationCount) / duration / Sizes.Mega,
+                RAMUseBefore = memUsedBefore / Sizes.GB,
+                RAMUseAfter = memUsedAfter / Sizes.GB,
+                globalPauses = globalPauses.Sum() / 1000 / duration * 100,
+            };
+            return GcResult;
         }
     }
 }
+    public class GcResult {
+        public System.TimeSpan Duration {get; set;}
+        // StaticSetSize
+        public long staticSetSize {get; set;}
+        // Thread count
+        public int Thread {get; set;}
+        // MaxSize 
+        public float MaxSize{get; set;}
+        public float MaxTime{get; set;}
+        // OperationperSecond
+        public float OperationperSecond {get; set;}
+        //
+        public float RAMUseBefore {get; set;}
+        public float RAMUseAfter {get;set;}
+        public float GCrate {get;set;}
+        public float globalPauses {get;set;}
+        // result
+        public double AllocationSpeed {get; set;}
+
+    }

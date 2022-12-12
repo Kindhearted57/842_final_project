@@ -19,11 +19,11 @@ namespace GCBurn
     public class report
     {
         // duration
-        public int Duration {get; set;}
+        public System.TimeSpan Duration {get; set;}
         // StaticSetSize
-        public int StaticSetSize {get; set;}
+        public long UnitSize {get; set;}
         // result
-        public int AllocationSpeed {get; set;}
+        public double AllocationSpeed {get; set;}
     }
     public class App
     {
@@ -56,6 +56,10 @@ namespace GCBurn
             [Option('p', "outputMode", Required = false, HelpText = "Output mode (f = full, m = minimal)", 
                 Default = null)] // null = don't change what's on start
             public string OutputMode { get; set; }
+            [Option('f', "outputFileAddr", Required = false, HelpText = "Specify the output file location")]
+            public string OutputAddr {get; set;}
+            [Option('u', "UnitSize", Required = = false, HelpText = "Specify the allocation size")]
+            public long? UnitSize{get; set;}
         }
         
         public IndentedTextWriter Writer = new IndentedTextWriter(Console.Out, "  ");
@@ -100,8 +104,11 @@ namespace GCBurn
             // Applying options
             if (!string.IsNullOrEmpty(options.GCLatencyMode))
                 GCSettings.LatencyMode = Enum.Parse<GCLatencyMode>(options.GCLatencyMode);
+            if (options.UnitSize.HasValue)
+                UnitAllocator.UnitSize = options.UnitSize.Value;
             if (options.Duration.HasValue)
                 BurnTester.DefaultDuration = TimeSpan.FromSeconds(options.Duration.Value);
+                SpeedTester.DefaultDuration = TimeSpan.FromSeconds(options.Duration.Value);
             BurnTester.DefaultMaxSize = ArgumentHelper.ParseRelativeValue(
                 options.MaxSize, BurnTester.DefaultMaxSize, true);
             ParallelRunner.ThreadCount = (int) ArgumentHelper.ParseRelativeValue(
@@ -113,8 +120,10 @@ namespace GCBurn
                 tests += "b";
                 staticSetSizeGb = (int) ArgumentHelper.ParseRelativeValue(options.StaticSetSize, ramSizeGb, true);
             }
+            // ?? operator returns the value of the left-hand operand if it isn't null
+            // Otherwise, it evaluaates the right-hand operand and returns 
             var outputMode = options.OutputMode ?? "f";
-
+            var outputAddr = options.OutputAddr ?? "result.json";
             if (outputMode == "f") {
                 // Dumping environment info
                 Writer.AppendValue("Launch parameters", string.Join(" ", Environment.GetCommandLineArgs().Skip(1)));
@@ -151,7 +160,14 @@ namespace GCBurn
             }
 
             if (tests.Contains("a")) {
-                RunSpeedTest();
+                var result = RunSpeedTest();
+                report baseline_result = new report{
+                    Duration = BurnTester.DefaultDuration,
+                    UnitSize = UnitAllocator.UnitSize,
+                    AllocationSpeed = result,
+
+                };
+                append_json(outputAddr, baseline_result);
             }
             if (tests.Contains("b")) {
                 var title = $"--- Static set = {staticSetSizeGb} GB ({staticSetSizeGb * 100.0 / ramSizeGb:0.##} % RAM) ---";
