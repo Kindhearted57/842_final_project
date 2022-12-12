@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>GCBurn</AssemblyName>
+    <RootNamespace>GCBurn</RootNamespace>
+    <!-- This info is displayed in help output -->
+    <AssemblyTitle>GCBurn</AssemblyTitle>
+    <Version>0.2</Version>
+    <Copyright>(C) 2018-2e99 GCBurn Team</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+    <PackageReference Include="MedallionShell" Version="1.6.1" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Benchmarking.Common\Benchmarking.Common.csproj" />
+    <ProjectReference Include="..\Main\GCBurn.Main.csproj" />
+  </ItemGroup>
+</Project>

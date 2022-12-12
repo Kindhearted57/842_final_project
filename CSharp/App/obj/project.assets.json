@@ -1,0 +1,395 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CommandLineParser/2.9.0-preview1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MedallionShell/1.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MedallionShell.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MedallionShell.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Reactive/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/_._": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/System.Reactive.targets": {}
+        }
+      },
+      "Benchmarking.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "MedallionShell": "1.6.1",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Benchmarking.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Benchmarking.Common.dll": {}
+        }
+      },
+      "GCBurn.Main/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Benchmarking.Common": "1.0.0",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GCBurn.Main.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GCBurn.Main.dll": {}
+        }
+      }
+    },
+    "net5.0": {
+      "CommandLineParser/2.9.0-preview1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MedallionShell/1.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MedallionShell.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MedallionShell.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Reactive/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net5.0/_._": {}
+        }
+      },
+      "Benchmarking.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "MedallionShell": "1.6.1",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Benchmarking.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Benchmarking.Common.dll": {}
+        }
+      },
+      "GCBurn.Main/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Benchmarking.Common": "1.0.0",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GCBurn.Main.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GCBurn.Main.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CommandLineParser/2.9.0-preview1": {
+      "sha512": "/cv6pigvbhmN1b3Y3FRf6EPHNFRtZhlScqQNrzVkTfR7DoDKdvpdbmPL7HhpNEJaTl7JMwvwojJMFjGGAr5wPg==",
+      "type": "package",
+      "path": "commandlineparser/2.9.0-preview1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CommandLine20.png",
+        "License.md",
+        "README.md",
+        "commandlineparser.2.9.0-preview1.nupkg.sha512",
+        "commandlineparser.nuspec",
+        "lib/net40/CommandLine.dll",
+        "lib/net40/CommandLine.xml",
+        "lib/net45/CommandLine.dll",
+        "lib/net45/CommandLine.xml",
+        "lib/net461/CommandLine.dll",
+        "lib/net461/CommandLine.xml",
+        "lib/netstandard2.0/CommandLine.dll",
+        "lib/netstandard2.0/CommandLine.xml"
+      ]
+    },
+    "MedallionShell/1.6.1": {
+      "sha512": "wpnnpmXtqNo3TVJNUMWCqANKyD30+/ZA/4tMjzWVwsZOTzZpiGkuQjZ7xDvFU2Iw1eP95oa3ixBU23w/OrtdZQ==",
+      "type": "package",
+      "path": "medallionshell/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/MedallionShell.dll",
+        "lib/net45/MedallionShell.xml",
+        "lib/net46/MedallionShell.dll",
+        "lib/net46/MedallionShell.xml",
+        "lib/netstandard1.3/MedallionShell.dll",
+        "lib/netstandard1.3/MedallionShell.xml",
+        "lib/netstandard2.0/MedallionShell.dll",
+        "lib/netstandard2.0/MedallionShell.xml",
+        "medallionshell.1.6.1.nupkg.sha512",
+        "medallionshell.nuspec"
+      ]
+    },
+    "System.Reactive/5.0.0": {
+      "sha512": "erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
+      "type": "package",
+      "path": "system.reactive/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net5.0/_._",
+        "build/netcoreapp3.1/System.Reactive.dll",
+        "build/netcoreapp3.1/System.Reactive.targets",
+        "build/netcoreapp3.1/System.Reactive.xml",
+        "buildTransitive/net5.0/_._",
+        "buildTransitive/netcoreapp3.1/System.Reactive.targets",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net5.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net5.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net5.0/System.Reactive.dll",
+        "lib/net5.0/System.Reactive.xml",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.16299/System.Reactive.dll",
+        "lib/uap10.0.16299/System.Reactive.pri",
+        "lib/uap10.0.16299/System.Reactive.xml",
+        "system.reactive.5.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
+    },
+    "Benchmarking.Common/1.0.0": {
+      "type": "project",
+      "path": "../Benchmarking.Common/Benchmarking.Common.csproj",
+      "msbuildProject": "../Benchmarking.Common/Benchmarking.Common.csproj"
+    },
+    "GCBurn.Main/1.0.0": {
+      "type": "project",
+      "path": "../Main/GCBurn.Main.csproj",
+      "msbuildProject": "../Main/GCBurn.Main.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Benchmarking.Common >= 1.0.0",
+      "CommandLineParser >= 2.9.0-preview1",
+      "GCBurn.Main >= 1.0.0",
+      "MedallionShell >= 1.6.1",
+      "System.Reactive >= 5.0.0"
+    ],
+    "net5.0": [
+      "Benchmarking.Common >= 1.0.0",
+      "CommandLineParser >= 2.9.0-preview1",
+      "GCBurn.Main >= 1.0.0",
+      "MedallionShell >= 1.6.1",
+      "System.Reactive >= 5.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/ruji/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "0.2.0",
+    "restore": {
+      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/GCBurn.App.csproj",
+      "projectName": "GCBurn",
+      "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/GCBurn.App.csproj",
+      "packagesPath": "/Users/ruji/.nuget/packages/",
+      "outputPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/obj/",
+      "projectStyle": "PackageReference",
+      "crossTargeting": true,
+      "configFilePaths": [
+        "/Users/ruji/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0",
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            },
+            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj"
+            }
+          }
+        },
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            },
+            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "CommandLineParser": {
+            "target": "Package",
+            "version": "[2.9.0-preview1, )"
+          },
+          "MedallionShell": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "System.Reactive": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-x64",
+            "version": "[3.1.28, 3.1.28]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+      },
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "CommandLineParser": {
+            "target": "Package",
+            "version": "[2.9.0-preview1, )"
+          },
+          "MedallionShell": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "System.Reactive": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-x64",
+            "version": "[5.0.17, 5.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

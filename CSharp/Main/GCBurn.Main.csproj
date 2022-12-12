@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>GCBurn.Main</AssemblyName>
+    <RootNamespace>GCBurn</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Benchmarking.Common\Benchmarking.Common.csproj" />
+  </ItemGroup>
+
+</Project>

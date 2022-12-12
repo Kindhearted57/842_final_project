@@ -1,0 +1,13 @@
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/bin/Debug/netstandard2.1/GCBurn.Main.deps.json
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/bin/Debug/netstandard2.1/GCBurn.Main.dll
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/bin/Debug/netstandard2.1/GCBurn.Main.pdb
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/bin/Debug/netstandard2.1/Benchmarking.Common.dll
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/bin/Debug/netstandard2.1/Benchmarking.Common.pdb
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.csproj.AssemblyReference.cache
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.AssemblyInfoInputs.cache
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.AssemblyInfo.cs
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.csproj.CoreCompileInputs.cache
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.csproj.CopyComplete
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.dll
+/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/Debug/netstandard2.1/GCBurn.Main.pdb

@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {}
+  },
+  "projects": {
+    "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
+        "projectName": "Benchmarking.Common",
+        "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
+        "packagesPath": "/Users/ruji/.nuget/packages/",
+        "outputPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ruji/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "MedallionShell": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "NETStandard.Library.Ref",
+              "version": "[2.1.0, 2.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
