@@ -7,14 +7,21 @@ import time
 
 results = [None]*const.PassCount
 
+class SpeedResult:
+    def __init__(self, Duration, UnitSize, AllocationSpeed):
+        self.Duration = Duration
+        self.UnitSize = UnitSize
+        self.AllocationSpeed = AllocationSpeed
+
 class SpeedTester:
-    def __init__(self, NoOutput, Duration, AllocationCount):
+    def __init__(self, NoOutput, Duration, AllocationCount, UnitSize):
         self.NoOutput = NoOutput
         self.Duration = Duration
         self.AllocationCount = AllocationCount
+        self.UnitSize = UnitSize
 
 def NewSpeedTester():
-    return SpeedTester(False, const.DefaultDuration, 0 )
+    return SpeedTester(False, const.DefaultDuration, 0, const.DefaultUnitSize)
 
 def NewWarmupSpeedTester():
     tester = NewSpeedTester()
@@ -25,13 +32,14 @@ def NewWarmupSpeedTester():
 def _AllocatorThread(tester,index):
      global results
      results[index] = baseline_test.run_baseline(baseline_test.NewUnitAllocator(tester.Duration))
+
 def run_speed_tester (tester):
     duration = tester.Duration.total_seconds()
     if not tester.NoOutput:
         print("Test settings: \n")
         print("Duration {duration} s \n".format(duration=duration))
         print("Thread Count {thread_count} \n".format(thread_count=threading.active_count()))
-        print("Unit Size {} \n")
+        print("Unit Size {unit_size} \n".format(unit_size=const.DefaultUnitSize))
     totalCount = 0
     
     
@@ -56,4 +64,5 @@ def run_speed_tester (tester):
         print("Allocation speed \n")
         print("Operation per second {operation_num}".format(operation_num = totalCount/duration/10**6))
     
-    return totalCount/duration/10**6
+    return SpeedResult(duration, const.DefaultUnitSize, totalCount/duration/10**6)
+    

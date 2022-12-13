@@ -22,7 +22,7 @@ def write_json_to_file(data, file_name):
         json.dump(data , f)
 
 def args(argv: List[str]):
-
+    print("hi!")
     parser = argparse.ArgumentParser()
     parser.add_argument("-d","--duration",help="Test pass duration (seconds)",default=10)
     # Change the default value later
@@ -31,21 +31,19 @@ def args(argv: List[str]):
     # Change the default value later
     parser.add_argument("-o", "--object-size", help = "Maximum of object size", default = 10)
     parser_subs = parser.add_subparsers(dest="cmd")
-    parser_test = parser_subs.add_parser(
-        "test", help = "Choose which test to run"
-    )
 
-    parser_test_subs = parser_test.add_subparsers(dest="cmd_test")
-    parser_test_subs_raw = parser_test_subs.add_parser("raw", help = "Test flag for raw allocation")
-    parser_test_subs_gc = parser_test_subs.add_parser("gc", help = "Test flag for garbage collection")
+    parser_test_subs_raw = parser_subs.add_parser("baseline", help = "Baseline Test")
+    parser_test_subs_gc = parser_subs.add_parser("gc", help = "GC Test")
     
     args = parser.parse_args(argv)
-    if args.cmd_test == "raw":
+    print(args)
+    if args.cmd == "baseline":
+       
         result = runSpeedTest()
         return result
         # collect the result and hand to the drawing part
 
-    elif args.cmd_test == "gc":
+    elif args.cmd == "gc":
         pass
     else:
         parser.print_help()

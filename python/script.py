@@ -6,7 +6,7 @@ import args
 import seaborn as sns
 import pandas as pd 
 import matplotlib.pyplot as plt
-
+import sys
 # Generate fig based on two lists
 def draw_result_plt(x, y, column_name, xlabel, ylabel):
     # We require xy to be of same size here
@@ -26,13 +26,17 @@ def run_baseline():
     for i in range(10):
         size_list.append(start_size+ i*10)
 
+    # First test the 
     for i in range(10):
 
-        base_command = ["test", "raw", "-m"]
-        baseline_size_result.append(args.args(base_command.append(size_list[i])))
+        base_command = ["-m"]
+        base_command.append(str(i))
+        base_command.append("baseline")
+        baseline_size_result.append(args.args(base_command))
+        
 
     # draw the figure with size as x-axis and result as y-axis
-    draw_result_plt(size_list, baseline_size_result)
+    # draw_result_plt(size_list, baseline_size_result)
 
 
 
