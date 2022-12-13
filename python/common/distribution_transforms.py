@@ -1,4 +1,4 @@
-import distribution
+import common.distribution as distribution
 import math
 
 #

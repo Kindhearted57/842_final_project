@@ -1,7 +1,7 @@
 import time
 import const
 NanosecondsPerReleaseCycle = 1000
-
+import datetime
 
 class GarbageHolder:
     def __init__(self, buckets, collected, startTime):
@@ -32,8 +32,8 @@ def AddGarbage(GarbageHolder,garbage, bucket, generation):
     if bucket == 0 and generation == 0:
         GarbageHolder.buckets[bucket][generation] = GarbageHolder.buckets[bucket][generation] + garbage
 
-def TryReleaseGarbage():
-    collectionIdx =             
+def TryReleaseGarbage(GarbageHolder):
+    collectionIdx = (datetime.timedelta(nanoseconds=1) - GarbageHolder.startTime)/NanosecondsPerReleaseCycle  
 def release(GarbageHolder, bucket, generationCount):
     while(generationCount !=0 and bucket < len(GarbageHolder.buckets)):
         remaining = generationCount = GarbageHolder.collected[bucket]

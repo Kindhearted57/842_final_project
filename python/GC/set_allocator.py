@@ -1,4 +1,4 @@
-import garbage_allocator
+import GC.garbage_allocator as gg
 import const 
 
 class SetAllocator:
@@ -16,7 +16,7 @@ def run_set_allocator(SetAllocator):
     currentSize = 0
     while currentSize < maxSetSize:
         arraySize = SetAllocator.Allocations[index].ArraySize
-        result = result.append(garbage_allocator.create_garbage(arraySize))
-        currentSize = currentSize + garbage_allocator.ArraySizeToByteSize(arraySize)
+        result = result.append(gg.create_garbage(arraySize))
+        currentSize = currentSize + gg.ArraySizeToByteSize(arraySize)
         index = (index+ 1)% const.AllocationSequenceLength
     SetAllocator.Set = result

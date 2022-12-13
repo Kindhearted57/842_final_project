@@ -1,5 +1,5 @@
 import const
-import garbage_holder
+import GC.garbage_holder as gh
 import time
 import datetime 
 import common.interval
@@ -30,7 +30,7 @@ def NewGabageAllocator(runDuration, allocations, startIndex):
     allocations, 
     startIndex, 
 
-    garbage_holder.GarbageHolder())
+    gh.GarbageHolder())
 
 class AllocationInfo:
     def __init__(self,
@@ -58,16 +58,16 @@ def run_garbage_allocator(GarbageAllocator):
     gcPauses = GarbageAllocator.GCPauses
     allocationIndex = GarbageAllocator.StartIndex
     allocationIndexMask = len(allocations)- 1
-    garbage_holder.Start(GarbageAllocator.GarbageHolder)
+    gh.Start(GarbageAllocator.GarbageHolder)
 
     lastTimestamp = time.time_ns()
-    endTimestamp = lastTimestamp + GarbageAllocator.RunDuration.
+    endTimestamp = lastTimestamp + GarbageAllocator.RunDuration
     while(lastTimestamp < endTimestamp):
         allocation_index = allocations[allocationIndex]
         allocationIndex = (allocationIndex+1) & allocationIndexMask
 
         # Allocation
-        garbage = garbage_holder.CreateGarbage(allocation_index.ArraySize)
+        garbage = gh.CreateGarbage(allocation_index.ArraySize)
         gh.AddGarbage(garbage, allocation_index.BucketIndex, allocation_index.GenerationIndex)
         GarbageAllocator.AllocationCount = GarbageAllocator.AllocationCount +1
         GarbageAllocator.ByteCount = GarbageAllocator.ByteCount

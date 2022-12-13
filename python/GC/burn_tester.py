@@ -1,16 +1,16 @@
 import const
 import threading
 import const
-import garbage_allocator
-import set_allocator
-import random
+import GC.garbage_allocator as gg
+import GC.set_allocator as gs
+import GC.diy_random as dr
 import baseline_test
-import sampler
+import GC.sampler as sampler
 import datetime 
 import common.distribution_transforms as cd
 import gc
 import time
-import interval 
+import common.interval as ci 
 import math
 
 results = [None]*const.Threadcount
@@ -35,17 +35,17 @@ class GcResult:
     RAMUseAfter,
     GCrate,
     globalPauses):
-    self.Duration = Duration
-    self.staticSetSize = staticSetSize
-    self.AllocationSpeed = AllocationSpeed
-    self.ThreadCount = ThreadCount
-    self.MaxSize = MaxSize
-    self.MaxTime = MaxTime
-    self.OperationPerSecond = OperationPerSecond
-    self.RAMUseBefore = RAMUseBefore
-    self.RAMUseAfter = RAMUseAfter
-    self.GCrate = GCrate
-    self.globalPauses = globalPauses
+        self.Duration = Duration
+        self.staticSetSize = staticSetSize
+        self.AllocationSpeed = AllocationSpeed
+        self.ThreadCount = ThreadCount
+        self.MaxSize = MaxSize
+        self.MaxTime = MaxTime
+        self.OperationPerSecond = OperationPerSecond
+        self.RAMUseBefore = RAMUseBefore
+        self.RAMUseAfter = RAMUseAfter
+        self.GCrate = GCrate
+        self.globalPauses = globalPauses
 
 class BurnTester:
     def __init__(self,
@@ -79,12 +79,12 @@ class BurnTester:
 # In this thread we create GarbageAllocator
 def _AllocatorThread(tester,index, startOffset):
      global results
-     results[index] = set_allocator.NewSetAllocator((tester.StaticSetSIze)/const.Threadcount, 
+     results[index] = gs.NewSetAllocator((tester.StaticSetSIze)/const.Threadcount, 
      tester.Allocations, 
      (startOffset + tester.StartIndexes[index])%const.AllocationSequenceLength)
     
 def _GarbageAllocatorThread(tester, index, ):
-    results[index] = garbage_allocator.NewGabageAllocator(tester.Duration, tester.Allocations, tester.StartIndexes[index])
+    results[index] = gg.NewGabageAllocator(tester.Duration, tester.Allocations, tester.StartIndexes[index])
 
 def NewGCTester (staticSetSize):
     return BurnTester(False, 
@@ -92,12 +92,12 @@ def NewGCTester (staticSetSize):
         const.DefaultMaxTime, 
         const.DefaultMaxSize,
         staticSetSize,
-        [garbage_allocator.AllocationInfo]*AllocationSequenceLength,
+        [gg.AllocationInfo]*AllocationSequenceLength,
         # This actually should be int32 but i guess it is fine to do this for now since it is python..
         []*AllocationSequenceLength,
         [[[]]],
         0,
-        random.NewStdRandom(123),
+        dr.NewStdRandom(123),
         False )
 
 def NewWarmupGCTester (staticSetSize):
@@ -122,13 +122,13 @@ def TryInitialize(BurnTester):
         bucketIndex = int(len(_timeStr) -1 )
         generationIndex = int(_timeStr[0]-'0')
 
-        BurnTester.Allocations[i] = garbage_allocator.AllocationInfo(arraySize, bucketIndex, generationIndex)
+        BurnTester.Allocations[i] = gg.AllocationInfo(arraySize, bucketIndex, generationIndex)
 
     # Remember to deal with the thread information here
     for i in range(const.Threadcount):
-        BurnTester.StartIndexes[i] = random.Next(BurnTester.Random) % AllocationSequenceLength
+        BurnTester.StartIndexes[i] = dr.Next(BurnTester.Random) % AllocationSequenceLength
     
-    startOffset = random.Next(BurnTester.Random) % AllocationSequenceLength
+    startOffset = dr.Next(BurnTester.Random) % AllocationSequenceLength
 
     
     # start the multithreading here
@@ -154,17 +154,9 @@ def run_gc_tester(BurnTester):
     # Normalize GCPause 
     allocators = []
 
-    #
-    for a in results:
-        allocators.append(a.GarbageAllocator)
-    
-    for a in range(allocators):
-        d = a.EndTimestamp- startTime
-        if duration < d:
-            duration = d
-        
-        for j in range(a.GCPauses):
-            
+    #Initialize results again
+    results = [None]*const.Threadcount
+
     #
     threads = [
         threading.Thread(target=_GarbageAllocatorThread, args=(tester, i),daemon=True)
@@ -176,7 +168,12 @@ def run_gc_tester(BurnTester):
     
     pauses = []
     duration = 0
+
     for a in results:
+        allocators.append(a.GarbageAllocator)
+
+
+    for a in allocators:
 
         d = (a.EndTimestamp-startTime) * NanoToseconds
         if duration < d:
@@ -186,12 +183,12 @@ def run_gc_tester(BurnTester):
             a.GCPauses[j].Start = (a.GCPauses[j].Start - startTime) * NanoToMilliseconds
             a.GCPauses[j].End = (a.GCPauses[j].End - startTime - 0.5) * NanoToMilliseconds
 
-        a.GCPauses = interval.ToCanonicalSorted(a.GCPauses)
+        a.GCPauses = ci.ToCanonicalSorted(a.GCPauses)
         pauses.append(a.GCPauses)
     
     intersections = pauses[0]
     for p in pauses:
-        intersections = interval.IntersectSortedPairs(intersections, p)
+        intersections = ci.IntersectSortedPairs(intersections, p)
     
     globalPauses = []
     globalPausesSum = 0
@@ -205,11 +202,15 @@ def run_gc_tester(BurnTester):
         for ai in a.allocations:
             t = math.Pow(10, ai.BucketIndex)*ai.GenerationIndex * NanosecondsPerReleaseCycle * NanoToMilliseconds
             allocationHoldDuration.append(t)
-            allocationSizes.append(garbage_allocator.ArraySizeToByteSize(ai.ArraySize))
+            allocationSizes.append(gg.ArraySizeToByteSize(ai.ArraySize))
     
     ops = 0
     bytes = 0
     for a in allocators:
         ops = a.AllocationCount + ops
         bytes = a.AllocationCOunt + ops
-    # TODO: I cannot find an efficient way to find out the 
+
+    # TODO: I cannot find an efficient way to find out the heap allocation status, so I will skip related info
+    print("Operation per second {ops:.2f} M/s \n".format(float(ops)/duration/10e6))
+    print("Bytes per second {bytes:.2f} GB/s \n".format(float(bytes)/duration/1<<30))
+    print("PauseDuration {pause} \n".format(globalPausesSum/1000/duration*100))

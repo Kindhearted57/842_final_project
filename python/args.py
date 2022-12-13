@@ -1,4 +1,5 @@
 import speed_tester
+import GC.burn_tester as gb
 import argparse
 import sys
 from typing import List
@@ -12,10 +13,10 @@ def runWarmup():
 def runSpeedTest():
     speedTester = speed_tester.NewSpeedTester()
     # invoke the run function from speed_tester
-    speed_tester.run_speed_tester(speedTester)
-    
-def GCTest():
-    pass
+    result = speed_tester.run_speed_tester(speedTester)
+    return result
+def GCTest(setsize):
+    gcTester = gb.NewGCTester(setsize)
 
 def write_json_to_file(data, file_name):
     with open(file_name, "w") as f:
@@ -26,7 +27,7 @@ def args(argv: List[str]):
     parser = argparse.ArgumentParser()
     parser.add_argument("-d","--duration",help="Test pass duration (seconds)",default=10)
     # Change the default value later
-    parser.add_argument("-m", "--set-size",help = "Static set size (GB)", default = 1)
+    parser.add_argument("-m", "--setsize",help = "Static set size (GB)", default = 1)
     parser.add_argument("-t", "--thread-num", help = "Number of threads to use", default = 10)
     # Change the default value later
     parser.add_argument("-o", "--object-size", help = "Maximum of object size", default = 10)
@@ -40,11 +41,11 @@ def args(argv: List[str]):
     if args.cmd == "baseline":
        
         result = runSpeedTest()
-        return result
+        
         # collect the result and hand to the drawing part
 
     elif args.cmd == "gc":
-        pass
+        result = GCTest(args.setsize)
     else:
         parser.print_help()
 
