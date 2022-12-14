@@ -33,6 +33,8 @@ namespace GCBurn.BurnTest
         public static double DefaultMaxTime = 1000 * TimeSamplerFrequency; // 1000 seconds
         public static double DefaultMaxSize = 1 << 17; // 128KB
         
+        public static double releaseCycleTimeInSeconds = 1.0 * GarbageHolder.TicksPerReleaseCycle / Stopwatch.Frequency;
+        public static double timeFactor = TimeSamplerUnitInSeconds / releaseCycleTimeInSeconds;
         public TimeSpan Duration = DefaultDuration;
         public StdRandom Random = new StdRandom(123); 
         public Func<StdRandom, IDistribution> CreateSizeSampler = Samplers.CreateStandardSizeSampler; 
@@ -46,7 +48,7 @@ namespace GCBurn.BurnTest
         private object[][] _staticSet;
         private (int ArraySize, sbyte BucketIndex, sbyte GenerationIndex)[] _allocations;
         private int[] _startIndexes;
-        
+
         public static BurnTester New(long staticSetSize) => new BurnTester() {
             StaticSetSize = staticSetSize
         };
@@ -65,8 +67,8 @@ namespace GCBurn.BurnTest
             _allocations = new (int, sbyte, sbyte) [AllocationSequenceLength];
             var sizeSampler = CreateSizeSampler(Random).Truncate(1, MaxSize);
             var timeSampler = CreateTimeSampler(Random).Truncate(0, MaxTime);
-            var releaseCycleTimeInSeconds = 1.0 * GarbageHolder.TicksPerReleaseCycle / Stopwatch.Frequency;
-            var timeFactor = TimeSamplerUnitInSeconds / releaseCycleTimeInSeconds;
+           
+            
             for (var i = 0; i < AllocationSequenceLength; i++) {
                 var size = (int) sizeSampler.Sample();
                 var arraySize = GarbageAllocator.ByteSizeToArraySize(size);

@@ -8,3 +8,13 @@
 /Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.csproj.CoreCompileInputs.cache
 /Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.dll
 /Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.pdb
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/bin/Release/netstandard2.1/Benchmarking.Common.deps.json
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/bin/Release/netstandard2.1/Benchmarking.Common.dll
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/bin/Release/netstandard2.1/Benchmarking.Common.pdb
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.csproj.AssemblyReference.cache
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.AssemblyInfoInputs.cache
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.AssemblyInfo.cs
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.csproj.CoreCompileInputs.cache
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.dll
+/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/Release/netstandard2.1/Benchmarking.Common.pdb

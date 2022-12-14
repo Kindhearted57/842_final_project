@@ -98,7 +98,27 @@ namespace GCBurn
             // dump the new json to 
             string json = JsonSerializer.Serialize(_data);
             File.WriteAllText(filename, json);
-        }        
+        }     
+        public void append_gc_json(string filename, GCBurn.BurnTest.GcResult obj)
+        {
+            // First check wether this file exists
+            List<GCBurn.BurnTest.GcResult> _data = new List<GCBurn.BurnTest.GcResult>();
+            
+            if (File.Exists(filename)){
+                // if file exists, read out the file
+                using (StreamReader r = new StreamReader(filename)){
+                    string json_content = r.ReadToEnd();
+                    _data = JsonSerializer.Deserialize<List<GCBurn.BurnTest.GcResult>>(json_content);
+                }
+            }
+
+            // if file does not exist, do nothing
+            // append the new report
+            _data.Add(obj);
+            // dump the new json to 
+            string json = JsonSerializer.Serialize(_data);
+            File.WriteAllText(filename, json);
+        }            
         public void Run(Options options)
         {
             // Applying options
@@ -107,8 +127,8 @@ namespace GCBurn
             if (options.UnitSize.HasValue)
                 UnitAllocator.UnitSize = options.UnitSize.Value;
             if (options.Duration.HasValue)
-                BurnTester.DefaultDuration = TimeSpan.FromSeconds(options.Duration.Value);
-                SpeedTester.DefaultDuration = TimeSpan.FromSeconds(options.Duration.Value);
+                BurnTester.DefaultDuration = TimeSpan.FromMilliseconds(options.Duration.Value);
+                SpeedTester.DefaultDuration = TimeSpan.FromMilliseconds(options.Duration.Value);
             BurnTester.DefaultMaxSize = ArgumentHelper.ParseRelativeValue(
                 options.MaxSize, BurnTester.DefaultMaxSize, true);
             ParallelRunner.ThreadCount = (int) ArgumentHelper.ParseRelativeValue(
@@ -171,7 +191,8 @@ namespace GCBurn
             }
             if (tests.Contains("b")) {
                 var title = $"--- Static set = {staticSetSizeGb} GB ({staticSetSizeGb * 100.0 / ramSizeGb:0.##} % RAM) ---";
-                RunBurnTest(title, (long) (staticSetSizeGb * Sizes.GB));
+                GCBurn.BurnTest.GcResult result = RunBurnTest(title, (long) (staticSetSizeGb * Sizes.GB));
+                append_gc_json(outputAddr, result);
             }
         }
 
@@ -192,12 +213,12 @@ namespace GCBurn
             return result;
         }
 
-        public void RunBurnTest(string title, long staticSetSize)
+        public GCBurn.BurnTest.GcResult RunBurnTest(string title, long staticSetSize)
         {
             Writer.AppendLine(title);
             Writer.AppendLine();
             var burnTester = BurnTester.New(staticSetSize);
-            burnTester.Run();
+            return burnTester.Run();
         }
     }
 }
