@@ -37,9 +37,9 @@ def baseline():
     start_size = 16
     for i in range(sample_size):
         size_list.append(start_size+ i*10)
-        commands.append("./program -u "
+        commands.append("dotnet run --project App/GCBurn.App.csproj -c Release -f net5.0 -- -d 10 -u "
         + str(size_list[i])
-        + " -dir "
+        + " -f "
         + " allocation_size_baseline_result.json"
         + " -r a"
         + " -p m")
@@ -63,35 +63,6 @@ def baseline():
         draw_result_plt(x, y, ["UnitSize", "AllocationSpeed"], "UnitSize", "AllocationSpeed", "allocation_size_baseline")
 
     # Baseline test based on Duration time
-
-    start_size = 10
-    commands = []
-    for i in range(sample_size):
-
-        commands.append("./program -d "+
-        str(start_size + i * 10)
-        + " -dir "
-        + "duration_baseline_result.json"
-        + " -r a"
-        + " -p m"
-        )
-
-    for command in commands:
-        print(command)
-        os.system(command)
-    # Open the json file to get the result
-    with open("duration_baseline_result.json", "r") as f:
-        # json format here
-        content = json.load(f)
-        # collect out the x-axis and y-axis seperately
-        x = []
-        y = []
-        for item in content:
-            x.append(item["Duration"])
-            y.append(item["AllocationSpeed"])
-
-        # draw fig based on that
-        draw_result_plt(x, y, ["Duration", "Allocation Speed"], "Duration", "AllocationSpeed", "baseline_duration")
 
 def gc():
     # First do
