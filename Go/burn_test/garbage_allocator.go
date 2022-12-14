@@ -47,7 +47,7 @@ func ByteSizeToArraySize(byteSize int32) int32 {
 }
 
 func ArraySizeToByteSize(arraySize int32) int64 {
-	return MinAllocationSize + (int64(arraySize) << ArrayItemSizeLog2)
+	return int64(MinAllocationSize) + (int64(arraySize) << ArrayItemSizeLog2)
 }
 
 func CreateGarbage(arraySize int32) []int64 {

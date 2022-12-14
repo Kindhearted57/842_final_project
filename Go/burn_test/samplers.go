@@ -38,6 +38,7 @@ func CreateStandardSizeSampler(rnd *StdRandom) Distribution {
 
 func CreateStandardTimeSampler(rnd *StdRandom) Distribution {
 	// Unit of time = 1 microsecond
+
 	dMethod := ReflectNegatives(NewNormalDistribution(rnd, 0, 0.1))  // ~ Method or a few
 	dRequest := ReflectNegatives(NewNormalDistribution(rnd, 0, 1e5)) // ~ Request or a few
 	dLongLiving := NewNormalDistribution(rnd, 1e7, 1e7)

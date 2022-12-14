@@ -12,8 +12,10 @@ import (
 
 const ArrayItemSize = 8
 const ArrayItemSizeLog2 = 3
-const MinArraySize = 24
-const MinAllocationSize = MinArraySize + 8
+
+var MinArraySize = int32(24)
+var MinAllocationSize = int32(MinArraySize + 8)
+
 const TimeSamplerFrequency = 1000000
 const AllocationSequenceLength = 1 << 20 // 2^20, i.e. ~ 1M items; must be a power of 2!
 
@@ -21,18 +23,21 @@ var MinGCPause = time.Duration(10 * time.Microsecond).Nanoseconds()
 var DefaultDuration = time.Duration(10 * time.Second)
 var DefaultMaxTime = float64(1000) * TimeSamplerFrequency // 1000 seconds
 var DefaultMaxSize = float64(1 << 17)                     // 128KB
+var releaseCycleTimeInSeconds = NanosecondsPerReleaseCycle * Nano
+var TimeFactorFactor = float64(1)
+var TimeFactor = ((1.0 / TimeSamplerFrequency) / releaseCycleTimeInSeconds) * TimeFactorFactor
 
 type GcResult struct {
 	//in seconds
 	Duration float64
 	// static set size, GB
-	staticSetSize int64
+	staticSetSize float64
 	// Allocation Speed, operation per second
 	AllocationSpeed float64
 	// Thread Count
 	ThreadCount int
 	//Maxsize
-	MaxSize float64
+	MaxSize int32
 	MaxTime float64
 	// Operationpersecond
 	OperationperSecond float64
@@ -79,9 +84,9 @@ func NewWarmupBurnTester(staticSetSize int64) *BurnTester {
 	return t
 }
 
-func (t *BurnTester) TryInitialize() {
+func (t *BurnTester) TryInitialize() float64 {
 	if t.isInitialized {
-		return
+		return 0
 	}
 	// sizeSampler is a transformeddistribution
 	//transformedDistribution.sample ->
@@ -101,8 +106,7 @@ func (t *BurnTester) TryInitialize() {
 	// func(x float64) float64 {return math.Max(x. 0)})
 	sizeSampler := Truncate(CreateStandardSizeSampler(t.Random), 1, t.MaxSize)
 	timeSampler := Truncate(CreateStandardTimeSampler(t.Random), 0, t.MaxTime)
-	releaseCycleTimeInSeconds := NanosecondsPerReleaseCycle * Nano
-	timeFactor := (1.0 / TimeSamplerFrequency) / releaseCycleTimeInSeconds
+
 	for i := 0; i < AllocationSequenceLength; i++ {
 		// math.Max(min, math.Min(max, createstandardsizesampler.sample()))
 		size := int32(sizeSampler.Sample())
@@ -111,7 +115,7 @@ func (t *BurnTester) TryInitialize() {
 		// TransformedDistribution.sample -> t.transform(t.d.sample())
 		_time := timeSampler.Sample()
 		//Itoa int to string
-		_timeStr := strconv.Itoa(int(_time * timeFactor))
+		_timeStr := strconv.Itoa(int(_time * TimeFactor))
 		bucketIndex := int8(len(_timeStr) - 1)
 		generationIndex := int8(_timeStr[0] - '0')
 
@@ -129,6 +133,9 @@ func (t *BurnTester) TryInitialize() {
 			t.Allocations,
 			(startOffset+t.StartIndexes[i])%AllocationSequenceLength)
 	})
+
+	// Set allocator here is used to allocate static set
+
 	activities := runner.Run()
 	for _, a := range activities {
 		allocator := a.(*SetAllocator)
@@ -139,11 +146,14 @@ func (t *BurnTester) TryInitialize() {
 	runtime.GC()
 
 	t.isInitialized = true
+	return TimeFactor
 }
 
 func (t *BurnTester) Run() *GcResult {
-	t.TryInitialize()
+	var timefactor = t.TryInitialize()
+	// In this try initialize process, allocation[] is filled with the randomization result
 
+	// This variable here does not work
 	testDuration := t.Duration.Seconds()
 	if !t.NoOutput {
 		fmt.Printf("Test settings:\n")
@@ -240,13 +250,14 @@ func (t *BurnTester) Run() *GcResult {
 	DumpArrayStats(globalPauses, "ms", "      ", true)
 	fmt.Println()
 
+	var staticsetsize = t.StaticSetSize
 	return &GcResult{
 		Duration:           duration,
-		staticSetSize:      t.StaticSetSize,
+		staticSetSize:      float64(staticsetsize) / GB,
 		AllocationSpeed:    float64(msPost.Mallocs-msPre.Mallocs) / duration / Mega,
 		ThreadCount:        ThreadCount,
-		MaxSize:            t.MaxSize,
-		MaxTime:            t.MaxTime,
+		MaxSize:            MinArraySize,
+		MaxTime:            timefactor,
 		OperationperSecond: float64(ops) / duration / Mega,
 		RAMUseBefore:       float64(msPre.HeapAlloc) / GB,
 		RAMUseAfter:        float64(msPost.HeapAlloc) / GB,

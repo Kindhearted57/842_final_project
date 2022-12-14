@@ -1,12 +1,13 @@
 package speed_test
 
 import (
-	. "../common"
 	"fmt"
 	"time"
+
+	. "../common"
 )
 
-const PassCount = 100
+const PassCount = 30
 
 var DefaultDuration = time.Duration(time.Millisecond)
 var DefaultUnitSize int64 = 16

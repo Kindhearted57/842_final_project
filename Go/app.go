@@ -16,7 +16,7 @@ import (
 type baselineResult struct {
 	//in seconds
 	Duration int64
-	// static set size, GB
+	// Allocation Unit Size
 	UnitSize int64
 	// Allocation Speed
 	AllocationSpeed float64
@@ -65,13 +65,13 @@ func append_json_gc(filename string, newStruct *bt.GcResult) {
 	if err == nil {
 		// if err == nil which means this file already exists
 		// read out the content from the file
-		fmt.Println(data)
+
 		file, err := os.ReadFile(filename)
 		if err == nil {
 			json.Unmarshal(file, &data)
 		}
 	}
-
+	fmt.Println(data)
 	data = append(data, *newStruct)
 	// marshal and write again the data
 	dataBytes, err := json.Marshal(data)
@@ -87,7 +87,8 @@ func main() {
 	var durationSecFlag = flag.Int64("d", 10, "Test pass duration, seconds")
 	var staticSetSizeGbFlag = flag.String("m", "", "Static set size, GB")
 	var threadCountFlag = flag.String("t", "", "Number of threads to use")
-	var maxSizeFlag = flag.String("o", "", "Max. object size")
+	var maxSizeFlag = flag.Int("o", 32, "Max. object size")
+	var maxTimeFlag = flag.Float64("w", 1, "Max. Time size")
 	var testsFlag = flag.String("r", "", "Tests to run (a = raw allocation, b = burn)")
 	var outputModeFlag = flag.String("p", "", "Output mode (f = full, m = minimal)")
 	var _ = flag.String("l", "", "Latency mode (ignored for Go)")
@@ -95,9 +96,11 @@ func main() {
 	var outputtoFileFlag = flag.String("dir", "outputfile.json", "Specify the output file location")
 	var UnitSizeFlag = flag.Int64("u", 16, "Unit Size (B)")
 	flag.Parse()
-	bt.DefaultDuration = time.Duration(*durationSecFlag * int64(time.Second))
-	st.DefaultDuration = time.Duration(*durationSecFlag * int64(time.Second))
-	bt.DefaultMaxSize = ParseRelative(*maxSizeFlag, bt.DefaultMaxSize, true)
+	bt.DefaultDuration = time.Duration(*durationSecFlag * int64(time.Millisecond))
+	st.DefaultDuration = time.Duration(*durationSecFlag * int64(time.Millisecond))
+	bt.TimeFactor = (*maxTimeFlag) * bt.TimeFactor
+	bt.MinAllocationSize = int32(*maxSizeFlag)
+	//ParseRelative(*maxSizeFlag, bt.DefaultMaxSize, true)
 	ThreadCount = int(ParseRelative(*threadCountFlag, float64(ThreadCount), true))
 	tests := strings.ToLower(*testsFlag)
 	staticSetSizeGb := 0

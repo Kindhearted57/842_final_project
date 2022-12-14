@@ -35,6 +35,7 @@ func (a *UnitAllocator) Run() {
 
 	for lastTimestamp < endTimestamp {
 		for i := 0; i < StepSize; i++ {
+			// It seems that unitsize is not used here...?
 			last = new(AllocationUnit) // Just to make sure there is a heap allocation
 			// last = &AllocationUnit{} // This version runs with the same speed
 		}
