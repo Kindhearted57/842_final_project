@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TlszD8pBAcgV9bhle8NJxVwffO1gIoyUY0eDigNMCsuel6Lz7jk76hzd807CldY+AumcQmtPOHZPsMj1LSyz8Q==",
+  "dgSpecHash": "+sLBy2W1WOs6U4jYvha762rMTvXH/cB5Mok4GGjmWNqbRl0JbmrGXZ6PkyCvGqjTcJogPupF/5Y+OKkjh8rwig==",
   "success": true,
-  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
+  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
   "expectedPackageFiles": [
     "/Users/ruji/.nuget/packages/medallionshell/1.6.1/medallionshell.1.6.1.nupkg.sha512",
     "/Users/ruji/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",

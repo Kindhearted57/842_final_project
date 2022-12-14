@@ -246,11 +246,11 @@
   "project": {
     "version": "0.2.0",
     "restore": {
-      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/GCBurn.App.csproj",
+      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/CSharp/App/GCBurn.App.csproj",
       "projectName": "GCBurn",
-      "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/GCBurn.App.csproj",
+      "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/App/GCBurn.App.csproj",
       "packagesPath": "/Users/ruji/.nuget/packages/",
-      "outputPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/obj/",
+      "outputPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/App/obj/",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
@@ -267,22 +267,22 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
             },
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj"
             }
           }
         },
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
             },
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj"
             }
           }
         }

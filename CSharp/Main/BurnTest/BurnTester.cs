@@ -11,7 +11,6 @@ namespace GCBurn.BurnTest
     public class GcResult {
         public System.TimeSpan Duration {get; set;}
         // StaticSetSize
-        public long staticSetSize {get; set;}
         // Thread count
         public int Thread {get; set;}
         // MaxSize 
@@ -200,7 +199,6 @@ namespace GCBurn.BurnTest
             Writer.AppendLine();
             GcResult GCResult = new GcResult{
                 Duration = BurnTester.DefaultDuration,
-                staticSetSize = BurnTester.StaticSetSize,
                 Thread = ParallelRunner.ThreadCount,
                 MaxSize = BurnTester.DefaultMaxSize,
                 MaxTime = BurnTester.DefaultMaxTime,
@@ -209,7 +207,7 @@ namespace GCBurn.BurnTest
                 RAMUseAfter = memUsedAfter / Sizes.GB,
                 globalPauses = globalPauses.Sum() / 1000 / duration * 100,
             };
-            return GcResult;
+            return GCResult;
         }
     }
 }

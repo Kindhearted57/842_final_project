@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d1zU2hIspwSp/OKgDkJe+WNgcGdq/3+PHRhlMkDh0RlsD5/YSRFbTNEWKU/udLFoOhAUFdfyQWyBmT/bJjyxyw==",
+  "dgSpecHash": "pk/T6CSFQKEyy0UinM7R+ViXzPqSC3EziBNcR4AvvYT75zETiDQSjFKnVE2OeTCfpsYW46tpRu6TOWmiYycTRQ==",
   "success": true,
-  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/App/GCBurn.App.csproj",
+  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/CSharp/App/GCBurn.App.csproj",
   "expectedPackageFiles": [
     "/Users/ruji/.nuget/packages/commandlineparser/2.9.0-preview1/commandlineparser.2.9.0-preview1.nupkg.sha512",
     "/Users/ruji/.nuget/packages/medallionshell/1.6.1/medallionshell.1.6.1.nupkg.sha512",

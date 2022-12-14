@@ -1,0 +1,103 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "GCBurn/0.2": {
+        "dependencies": {
+          "Benchmarking.Common": "1.0.0",
+          "CommandLineParser": "2.9.0-preview1",
+          "GCBurn.Main": "1.0.0",
+          "MedallionShell": "1.6.1",
+          "System.Reactive": "5.0.0"
+        },
+        "runtime": {
+          "GCBurn.dll": {}
+        }
+      },
+      "CommandLineParser/2.9.0-preview1": {
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "assemblyVersion": "2.9.0.0",
+            "fileVersion": "2.9.0.0"
+          }
+        }
+      },
+      "MedallionShell/1.6.1": {
+        "runtime": {
+          "lib/netstandard2.0/MedallionShell.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "System.Reactive/5.0.0": {
+        "runtime": {
+          "lib/net5.0/System.Reactive.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.1"
+          }
+        }
+      },
+      "Benchmarking.Common/1.0.0": {
+        "dependencies": {
+          "MedallionShell": "1.6.1",
+          "System.Reactive": "5.0.0"
+        },
+        "runtime": {
+          "Benchmarking.Common.dll": {}
+        }
+      },
+      "GCBurn.Main/1.0.0": {
+        "dependencies": {
+          "Benchmarking.Common": "1.0.0",
+          "System.Reactive": "5.0.0"
+        },
+        "runtime": {
+          "GCBurn.Main.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GCBurn/0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CommandLineParser/2.9.0-preview1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/cv6pigvbhmN1b3Y3FRf6EPHNFRtZhlScqQNrzVkTfR7DoDKdvpdbmPL7HhpNEJaTl7JMwvwojJMFjGGAr5wPg==",
+      "path": "commandlineparser/2.9.0-preview1",
+      "hashPath": "commandlineparser.2.9.0-preview1.nupkg.sha512"
+    },
+    "MedallionShell/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wpnnpmXtqNo3TVJNUMWCqANKyD30+/ZA/4tMjzWVwsZOTzZpiGkuQjZ7xDvFU2Iw1eP95oa3ixBU23w/OrtdZQ==",
+      "path": "medallionshell/1.6.1",
+      "hashPath": "medallionshell.1.6.1.nupkg.sha512"
+    },
+    "System.Reactive/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
+      "path": "system.reactive/5.0.0",
+      "hashPath": "system.reactive.5.0.0.nupkg.sha512"
+    },
+    "Benchmarking.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GCBurn.Main/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

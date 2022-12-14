@@ -486,11 +486,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj",
+      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj",
       "projectName": "GCBurn.Main",
-      "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj",
+      "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj",
       "packagesPath": "/Users/ruji/.nuget/packages/",
-      "outputPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/obj/",
+      "outputPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/obj/",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
@@ -507,16 +507,16 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
             }
           }
         },
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
-              "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
+            "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj": {
+              "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj"
             }
           }
         }

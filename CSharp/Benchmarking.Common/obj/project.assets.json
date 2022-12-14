@@ -418,11 +418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
+      "projectUniqueName": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
       "projectName": "Benchmarking.Common",
-      "projectPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
+      "projectPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/Benchmarking.Common.csproj",
       "packagesPath": "/Users/ruji/.nuget/packages/",
-      "outputPath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Benchmarking.Common/obj/",
+      "outputPath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Benchmarking.Common/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ruji/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MBOok6hzHjO91mxCWBEnut2LcTVPsxDKhaN21cJ0z7zgYI9yBeEQ8ZptDcvINe0BvY2rNh+vYK0vZCby/69sBA==",
+  "dgSpecHash": "u1Kls8WeHHlkHcGUaoELxCyg1r1OE91I7802XGKCEWOzonj03nhk9PEGPAv25me5cCfM9SPqt9X8q2mIR8TOyQ==",
   "success": true,
-  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Tests/GCBurn.Tests.csproj",
+  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Tests/GCBurn.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/ruji/.nuget/packages/medallionshell/1.6.1/medallionshell.1.6.1.nupkg.sha512",
     "/Users/ruji/.nuget/packages/microsoft.codecoverage/16.9.0-preview-20201020-06/microsoft.codecoverage.16.9.0-preview-20201020-06.nupkg.sha512",

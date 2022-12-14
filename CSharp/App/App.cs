@@ -12,7 +12,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+
 
 namespace GCBurn 
 {
@@ -58,7 +58,7 @@ namespace GCBurn
             public string OutputMode { get; set; }
             [Option('f', "outputFileAddr", Required = false, HelpText = "Specify the output file location")]
             public string OutputAddr {get; set;}
-            [Option('u', "UnitSize", Required = = false, HelpText = "Specify the allocation size")]
+            [Option('u', "UnitSize", Required = false, HelpText = "Specify the allocation size")]
             public long? UnitSize{get; set;}
         }
         

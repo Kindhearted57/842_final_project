@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o7NcEUMkMpnuToV1nungqsDzt9oaHbmvtgrDShh8VJSm9f/bxpIy9mkuVNzoISpDxYHXPjNNFVtHiNKyKSIWCQ==",
+  "dgSpecHash": "ZHbJEvsBMu5eqQNvLI7S4qjTxUXgNGFbMp7RQPXP/hrVRJJeky97ms6Zk+DCVQ8JyD8UfV3sHj3MuyF3p8Hwhw==",
   "success": true,
-  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/GCBurn/src/CSharp/Main/GCBurn.Main.csproj",
+  "projectFilePath": "/Users/ruji/Documents/Github/842_final_project/CSharp/Main/GCBurn.Main.csproj",
   "expectedPackageFiles": [
     "/Users/ruji/.nuget/packages/medallionshell/1.6.1/medallionshell.1.6.1.nupkg.sha512",
     "/Users/ruji/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
